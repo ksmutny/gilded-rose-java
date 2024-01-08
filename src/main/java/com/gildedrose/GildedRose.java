@@ -11,11 +11,11 @@ class GildedRose {
         for (Item item : items) {
             if (item.name.equals("Sulfuras, Hand of Ragnaros")) continue;
 
-            if (item.name.equals("Aged Brie")) {
-                adjustQuality(item, item.sellIn <= 0 ? 2 : 1);
-            } else if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                int adjustment;
+            int adjustment = 0;
 
+            if (item.name.equals("Aged Brie")) {
+                adjustment = item.sellIn <= 0 ? 2 : 1;
+            } else if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
                 if (item.sellIn <= 0)
                     adjustment = -item.quality;
                 else if (item.sellIn <= 5)
@@ -24,12 +24,11 @@ class GildedRose {
                     adjustment = 2;
                 else
                     adjustment = 1;
-
-                adjustQuality(item, adjustment);
             } else {
-                adjustQuality(item, item.sellIn <= 0 ? -2 : -1);
+                adjustment = item.sellIn <= 0 ? -2 : -1;
             }
 
+            adjustQuality(item, adjustment);
             item.sellIn--;
         }
     }

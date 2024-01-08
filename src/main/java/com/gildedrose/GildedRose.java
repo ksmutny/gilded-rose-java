@@ -28,13 +28,9 @@ class GildedRose {
                 adjustment = item.sellIn <= 0 ? -2 : -1;
             }
 
-            adjustQuality(item, adjustment);
+            item.quality = clamp(item.quality + adjustment, 0, 50);
             item.sellIn--;
         }
-    }
-
-    private void adjustQuality(Item item, int adjustment) {
-        item.quality = clamp(item.quality + adjustment, 0, 50);
     }
 
     private int clamp(int value, int min, int max) {

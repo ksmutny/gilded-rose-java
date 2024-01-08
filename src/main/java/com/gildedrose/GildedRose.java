@@ -27,6 +27,8 @@ class GildedRose {
                 else if (item.sellIn <= 5) return 3;
                 else if (item.sellIn <= 10) return 2;
                 else return 1;
+            case "Conjured Mana Cake":
+                return item.sellIn <= 0 ? -4 : -2;
             default:
                 return item.sellIn <= 0 ? -2 : -1;
         }

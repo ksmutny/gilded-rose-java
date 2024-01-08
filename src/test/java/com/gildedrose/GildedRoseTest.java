@@ -51,7 +51,6 @@ class GildedRoseTest {
         assertEquals(50, backstagePass3.quality);
 
         assertEquals(2, conjuredManaCake.sellIn);
-        // TODO: Fails
-        // assertEquals(4, conjuredManaCake.quality);
+        assertEquals(4, conjuredManaCake.quality);
     }
 }

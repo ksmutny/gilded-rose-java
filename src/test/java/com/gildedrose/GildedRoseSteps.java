@@ -48,8 +48,18 @@ public class GildedRoseSteps {
         assertEquals(quality, app.items[0].quality);
     }
 
+    @Then("^the quality should remain unchanged$")
+    public void qualityShouldRemainUnchanged() {
+        assertEquals(originalQuality, app.items[0].quality);
+    }
+
     @Then("^the sell-by should be decreased by (\\d+)$")
     public void bellByShouldBeDecreasedBy(int decrease) {
         assertEquals(originalSellIn - decrease, app.items[0].sellIn);
+    }
+
+    @Then("^the sell-by should remain unchanged$")
+    public void sellByShouldRemainUnchanged() {
+        assertEquals(originalSellIn, app.items[0].sellIn);
     }
 }

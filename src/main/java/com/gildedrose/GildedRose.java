@@ -16,7 +16,9 @@ class GildedRose {
             } else if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
                 int adjustment;
 
-                if (item.sellIn <= 5)
+                if (item.sellIn <= 0)
+                    adjustment = -item.quality;
+                else if (item.sellIn <= 5)
                     adjustment = 3;
                 else if (item.sellIn <= 10)
                     adjustment = 2;
@@ -32,11 +34,9 @@ class GildedRose {
 
             if (item.sellIn < 0)
                 if (!item.name.equals("Aged Brie"))
-                    if (!item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
+                    if (!item.name.equals("Backstage passes to a TAFKAL80ETC concert"))
                         adjustQuality(item, -1);
-                    } else {
-                        item.quality = 0;
-                    }
+
         }
     }
 

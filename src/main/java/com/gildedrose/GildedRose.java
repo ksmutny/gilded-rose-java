@@ -19,19 +19,16 @@ class GildedRose {
     }
 
     private int qualityAdjustment(Item item) {
-        if (item.name.equals("Aged Brie")) {
-            return item.sellIn <= 0 ? 2 : 1;
-        } else if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-            if (item.sellIn <= 0)
-                return -item.quality;
-            else if (item.sellIn <= 5)
-                return 3;
-            else if (item.sellIn <= 10)
-                return 2;
-            else
-                return 1;
-        } else {
-            return item.sellIn <= 0 ? -2 : -1;
+        switch (item.name) {
+            case "Aged Brie":
+                return item.sellIn <= 0 ? 2 : 1;
+            case "Backstage passes to a TAFKAL80ETC concert":
+                if (item.sellIn <= 0) return -item.quality;
+                else if (item.sellIn <= 5) return 3;
+                else if (item.sellIn <= 10) return 2;
+                else return 1;
+            default:
+                return item.sellIn <= 0 ? -2 : -1;
         }
     }
 

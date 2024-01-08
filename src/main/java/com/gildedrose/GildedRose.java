@@ -27,16 +27,10 @@ class GildedRose {
 
                 adjustQuality(item, adjustment);
             } else {
-                adjustQuality(item, -1);
+                adjustQuality(item, item.sellIn <= 0 ? -2 : -1);
             }
 
             item.sellIn--;
-
-            if (item.sellIn < 0)
-                if (!item.name.equals("Aged Brie"))
-                    if (!item.name.equals("Backstage passes to a TAFKAL80ETC concert"))
-                        adjustQuality(item, -1);
-
         }
     }
 

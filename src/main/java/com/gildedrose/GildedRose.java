@@ -19,10 +19,11 @@ class GildedRose {
 
                 if (item.sellIn < 6)
                     incQualityUpTo50(item);
+            } else if (item.name.equals("Sulfuras, Hand of Ragnaros")) {
+
             } else {
                 if (item.quality > 0)
-                    if (!item.name.equals("Sulfuras, Hand of Ragnaros"))
-                        item.quality--;
+                    item.quality--;
             }
 
             if (!item.name.equals("Sulfuras, Hand of Ragnaros"))

@@ -23,7 +23,7 @@ class GildedRose {
                 else
                     adjustment = 1;
 
-                incQualityUpTo50(item, adjustment);
+                adjustQuality(item, adjustment);
             } else {
                 decQualityDownTo0(item);
             }
@@ -43,15 +43,18 @@ class GildedRose {
     }
 
     private void incQualityUpTo50(Item item) {
-        incQualityUpTo50(item, 1);
+        adjustQuality(item, 1);
     }
 
     private void decQualityDownTo0(Item item) {
-        if (item.quality > 0)
-            item.quality--;
+        adjustQuality(item, -1);
     }
 
-    private void incQualityUpTo50(Item item, int adjustment) {
-        item.quality = Math.min(50, item.quality + adjustment);
+    private void adjustQuality(Item item, int adjustment) {
+        item.quality = clamp(item.quality + adjustment, 0, 50);
+    }
+
+    private int clamp(int value, int min, int max) {
+        return Math.min(max, Math.max(min, value));
     }
 }

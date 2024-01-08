@@ -12,13 +12,16 @@ class GildedRose {
             if (item.name.equals("Aged Brie")) {
                 incQualityUpTo50(item);
             } else if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                incQualityUpTo50(item);
+                int adjustment;
 
-                if (item.sellIn < 11)
-                    incQualityUpTo50(item);
+                if (item.sellIn <= 5)
+                    adjustment = 3;
+                else if (item.sellIn <= 10)
+                    adjustment = 2;
+                else
+                    adjustment = 1;
 
-                if (item.sellIn < 6)
-                    incQualityUpTo50(item);
+                incQualityUpTo50(item, adjustment);
             } else if (item.name.equals("Sulfuras, Hand of Ragnaros")) {
 
             } else {
@@ -44,7 +47,10 @@ class GildedRose {
     }
 
     private void incQualityUpTo50(Item item) {
-        if (item.quality < 50)
-            item.quality++;
+        incQualityUpTo50(item, 1);
+    }
+
+    private void incQualityUpTo50(Item item, int adjustment) {
+        item.quality = Math.min(50, item.quality + adjustment);
     }
 }
